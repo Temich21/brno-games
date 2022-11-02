@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dnd_games",
+  "info": {
+    "singularName": "dnd-game",
+    "pluralName": "dnd-games",
+    "displayName": "Game",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "GM": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::player.player"
+    },
+    "Date": {
+      "type": "datetime"
+    },
+    "game_place": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::game-place.game-place"
+    },
+    "Images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "players": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::player.player",
+      "mappedBy": "dnd_game"
+    }
+  }
+}
