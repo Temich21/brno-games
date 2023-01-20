@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "dnd_games",
+  "collectionName": "games",
   "info": {
-    "singularName": "dnd-game",
-    "pluralName": "dnd-games",
-    "displayName": "D&D",
+    "singularName": "game",
+    "pluralName": "games",
+    "displayName": "Games",
     "description": ""
   },
   "options": {
@@ -12,25 +12,38 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "Game_name": {
       "type": "string"
+    },
+    "game_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::game-type.game-type"
+    },
+    "Players": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::player.player"
     },
     "GM": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::player.player"
+      "target": "api::gm.gm"
     },
-    "Date": {
-      "type": "datetime"
-    },
-    "game_place": {
+    "Game_place": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::game-place.game-place"
     },
-    "Images": {
+    "Date": {
+      "type": "datetime"
+    },
+    "Level": {
+      "type": "string"
+    },
+    "Image": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
@@ -39,11 +52,8 @@
         "audios"
       ]
     },
-    "players": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::player.player",
-      "mappedBy": "dnd_game"
+    "Description": {
+      "type": "text"
     }
   }
 }
