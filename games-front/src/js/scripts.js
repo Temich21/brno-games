@@ -1,133 +1,133 @@
 const backendUrl = "http://localhost:1337";
 
 async function loadNews() {
-  const data = await fetch(
-    `${backendUrl}/api/news?populate=*&sort[0]=publishedAt:desc`
-  );
-  const news = await data.json();
-  news.data.forEach(createCardNews);
+    const data = await fetch(
+        `${backendUrl}/api/news?populate=*&sort[0]=publishedAt:desc`
+    );
+    const news = await data.json();
+    news.data.forEach(createCardNews);
 }
 
 function createCardNews(data) {
-  const newElement = document.createElement("div");
-  const titleElement = document.createElement("h3");
-  const textElement = document.createElement("h4");
-  const divScript = document.querySelector(".content"); // нужно ли? по факту просто достаточно вставить в документ
+    const newElement = document.createElement("div");
+    const titleElement = document.createElement("h3");
+    const textElement = document.createElement("h4");
+    const divScript = document.querySelector(".content");
 
-  if (data.attributes.Image.data != null) {
-    const image = backendUrl + data.attributes.Image.data.attributes.url;
-    const imageElement = document.createElement("img");
-    const contentElement = document.createElement("div");
+    if (data.attributes.Image.data != null) {
+        const image = backendUrl + data.attributes.Image.data.attributes.url;
+        const imageElement = document.createElement("img");
+        const contentElement = document.createElement("div");
 
-    newElement.classList.add("contentWithImage");
-    contentElement.classList.add("contentWithImageContent");
-    imageElement.src = image;
+        newElement.classList.add("contentWithImage");
+        contentElement.classList.add("contentWithImageContent");
+        imageElement.src = image;
 
-    element = titleAndTextAppend(
-      contentElement,
-      titleElement,
-      textElement,
-      data
-    );
+        element = titleAndTextAppend(
+            contentElement,
+            titleElement,
+            textElement,
+            data
+        );
 
-    newElement.appendChild(imageElement);
-    newElement.appendChild(element);
-    divScript.appendChild(newElement);
-  } else {
-    newElement.classList.add("contentWithoutImage");
+        newElement.appendChild(imageElement);
+        newElement.appendChild(element);
+        divScript.appendChild(newElement);
+    } else {
+        newElement.classList.add("contentWithoutImage");
 
-    element = titleAndTextAppend(newElement, titleElement, textElement, data);
+        element = titleAndTextAppend(newElement, titleElement, textElement, data);
 
-    divScript.appendChild(element);
-  }
+        divScript.appendChild(element);
+    }
 }
 
 function titleAndTextAppend(element, titleElement, textElement, data) {
-  element.appendChild(titleElement);
-  element.appendChild(textElement);
+    element.appendChild(titleElement);
+    element.appendChild(textElement);
 
-  titleElement.innerText = data.attributes.Title;
-  textElement.innerText = data.attributes.Text;
-  return element;
+    titleElement.innerText = data.attributes.Title;
+    textElement.innerText = data.attributes.Text;
+    return element;
 }
 
 async function loadGames(category = null) {
-  const url = `${backendUrl}/api/games?populate=*`;
+    const url = `${backendUrl}/api/games?populate=*&sort[0]=publishedAt:desc`;
 
-  const query = category
-    ? `${url}&${`filters[game_type][GameTypeName][$eq]=${encodeURIComponent(
-        category
-      )}`}`
-    : url;
+    const query = category
+        ? `${url}&${`filters[game_type][GameTypeName][$eq]=${encodeURIComponent(
+            category
+        )}`}`
+        : url;
 
-  const data = await fetch(query);
-  const games = await data.json();
-  games.data.forEach(createCardGame);
+    const data = await fetch(query);
+    const games = await data.json();
+    games.data.forEach(createCardGame);
 }
 
 function createCardGame(data) {
-  const newElement = document.createElement("div");
-  const titleElement = document.createElement("h3");
-  const textElement = document.createElement("h4");
-  const divScript = document.querySelector(".content"); // нужно ли? по факту просто достаточно вставить в документ
+    const newElement = document.createElement("div");
+    const titleElement = document.createElement("h3");
+    const textElement = document.createElement("h4");
+    const divScript = document.querySelector(".content");
 
-  if (data.attributes.Image.data != null) {
-    const image = `${backendUrl}${data.attributes.Image.data.attributes.url}`;
-    const imageElement = document.createElement("img");
-    const contentElement = document.createElement("div");
+    if (data.attributes.Image.data != null) {
+        const image = `${backendUrl}${data.attributes.Image.data.attributes.url}`;
+        const imageElement = document.createElement("img");
+        const contentElement = document.createElement("div");
 
-    newElement.classList.add("contentWithImage");
-    contentElement.classList.add("contentWithImageContent");
-    imageElement.src = image;
+        newElement.classList.add("contentWithImage");
+        contentElement.classList.add("contentWithImageContent");
+        imageElement.src = image;
 
-    const [title, text] = contentUnification(data, titleElement, textElement);
+        const [title, text] = contentUnification(data, titleElement, textElement);
 
-    contentElement.appendChild(title);
-    contentElement.appendChild(text);
+        contentElement.appendChild(title);
+        contentElement.appendChild(text);
 
-    newElement.appendChild(imageElement);
-    newElement.appendChild(contentElement);
-    divScript.appendChild(newElement);
-  } else {
-    newElement.classList.add("contentWithoutImage");
+        newElement.appendChild(imageElement);
+        newElement.appendChild(contentElement);
+        divScript.appendChild(newElement);
+    } else {
+        newElement.classList.add("contentWithoutImage");
 
-    const [title, text] = contentUnification(data, titleElement, textElement);
+        const [title, text] = contentUnification(data, titleElement, textElement);
 
-    newElement.appendChild(title);
-    newElement.appendChild(text);
-    divScript.appendChild(newElement);
-  }
+        newElement.appendChild(title);
+        newElement.appendChild(text);
+        divScript.appendChild(newElement);
+    }
 }
 
 function contentUnification(data, titleElement, textElement) {
-  const { GM, Description, Level, Players, Game_place } = data.attributes;
+    const { GM, Description, Level, Players, Game_place } = data.attributes;
 
-  const GMInfo = GM.data.attributes;
-  const description = Description;
-  const level = Level;
-  const players = Players.data;
-  const gamePlace = Game_place.data.attributes;
-  const date = new Date(data.attributes.Date);
+    const GMInfo = GM.data.attributes;
+    const description = Description;
+    const level = Level;
+    const players = Players.data;
+    const gamePlace = Game_place.data.attributes;
+    const date = new Date(data.attributes.Date);
 
-  titleElement.innerText = data.attributes.Game_name;
-  textElement.innerHTML = `<div>GM:${GMInfo.Name} | Telegram:${
-    GMInfo.Telegram
-  }</div> 
-                             <div>${description}</div> 
-                             <div>Уровень персонажей: ${level}</div>
-                             <div>Игроки:<ul>${printPlayerList(
-                               players
-                             )}</ul></div>
-                             <div>Место проведения: ${
-                               gamePlace.Name
-                             } | Адрес: ${gamePlace.Description}</div>
-                             <div>Дата проведения: ${dateEditing(date)}</div>`;
+    const padding = 'padding-bottom:4px'
 
-  return [titleElement, textElement];
+    titleElement.innerText = data.attributes.Game_name;
+    textElement.innerHTML = `<div class='GM'>GM:${GMInfo.Name} | Telegram:
+    <a href="https://telegram.me/${GMInfo.Telegram}">${GMInfo.Telegram}</a></div> 
+                             <div style="font-family:cursive; ${padding}" >${description}</div> 
+                             <div style="${padding}">Уровень персонажей: ${level}</div>
+                             <div style="${padding}">Игроки:<ul>${printPlayerList(
+        players
+    )}</ul></div>
+                             <div style="${padding}">Место проведения: ${gamePlace.Name
+        } | Адрес: ${gamePlace.Description}</div>
+                             <div style="${padding}">Дата проведения: ${dateEditing(date)}</div>`;
+
+    return [titleElement, textElement];
 }
 
 function printPlayerList(players) {
-  return players.map(printPlayer).join("");
+    return players.map(printPlayer).join("");
 }
 
 const printPlayer = (player) => `
@@ -135,41 +135,41 @@ const printPlayer = (player) => `
 `;
 
 function dateEditing(date) {
-  const day = date.getDay();
-  const days = [
-    "Воскресенье",
-    "Понедельник",
-    "Вторник",
-    "Среда",
-    "Четверг",
-    "Пятница",
-    "Суббота",
-  ];
-  const dayName = days[date.getDay()];
+    const day = date.getDay();
+    const days = [
+        "Воскресенье",
+        "Понедельник",
+        "Вторник",
+        "Среда",
+        "Четверг",
+        "Пятница",
+        "Суббота",
+    ];
+    const dayName = days[date.getDay()];
 
-  const year = date.getFullYear();
+    const year = date.getFullYear();
 
-  const months = {
-    0: "Января",
-    1: "Февраля",
-    2: "Марта",
-    3: "Апреля",
-    4: "Мая",
-    5: "Июня",
-    6: "Июля",
-    7: "Августа",
-    8: "Сентября",
-    9: "Октября",
-    10: "Ноября",
-    11: "Декабря",
-  };
-  const monthName = months[date.getMonth()];
+    const months = {
+        0: "Января",
+        1: "Февраля",
+        2: "Марта",
+        3: "Апреля",
+        4: "Мая",
+        5: "Июня",
+        6: "Июля",
+        7: "Августа",
+        8: "Сентября",
+        9: "Октября",
+        10: "Ноября",
+        11: "Декабря",
+    };
+    const monthName = months[date.getMonth()];
 
-  const hour = date.getHours();
+    const hour = date.getHours();
 
-  const minutes = date.getMinutes();
+    const minutes = date.getMinutes();
 
-  const formatted = `${dayName}, ${day} ${monthName} ${year} в ${hour}:${minutes}0`;
+    const formatted = `${dayName}, ${day} ${monthName} ${year} в ${hour}:${minutes}0`;
 
-  return formatted;
+    return formatted;
 }

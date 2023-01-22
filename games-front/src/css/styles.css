@@ -1,8 +1,15 @@
+html {
+    background-image: url("http://localhost:1337/uploads/dark_grunge_texture_ac80e1053e.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 body {
     margin: 0;
     padding-bottom: 100px;
-    font-size: 12px;
-    background-color: #131313
+    /* font-size: 12px; */
+    /* background-color: #131313 */
 }
 
 .headerfloat {
@@ -45,9 +52,9 @@ h1 {
     justify-content: space-between;
     width: 650px;
     box-sizing: border-box;
-    padding: 0 0 0 85px;
+    padding: 0 0 0 60px;
     color: #DBDBDB;
-    font-size: 17px;
+    font-size: 18px;
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
@@ -67,7 +74,7 @@ h2 {
     margin: 0 auto;
     padding: 110px 20px 0px 20px;
     color: #DBDBDB;
-    font-size: 30px;
+    font-size: 35px;
     font-family: Georgia, "Times New Roman", Times, serif;
 }
 
@@ -82,13 +89,13 @@ h2 {
 
 h3 {
     margin: 0;
-    font-size: 25px;
-    font-weight: normal;
+    font-size: 27px;
+    font-weight: bolder;
 }
 
 h4 {
     margin: 5px 0;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: normal;
 }
 
@@ -137,4 +144,91 @@ img {
 
 ul {
     margin: auto;
+}
+
+.GM {
+    font-size: 18px;
+    padding-bottom: 4px
+}
+
+@media only screen and (min-width: 481px) and (max-width: 700px) {
+    .header {
+        width: 100%;
+        padding: 10px 0 10px 10px;
+    }
+
+    .logo {
+        width: 235px;
+    }
+
+    .bookmark {
+        padding: 0;
+        font-size: 22px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        padding: 115px 20px 0 20px;
+        font-size: 40px;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    .contact {
+        font-size: 18px;
+    }
+
+    .GM {
+        font-size: 23px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .header {
+        width: 100%;
+        padding: 10px 0 10px 10px;
+    }
+
+    .logo {
+        width: 260px;
+    }
+
+    .bookmark {
+        padding: 0;
+        font-size: 25px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    h2 {
+        padding: 140px 20px 0 20px;
+        font-size: 40px;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    .contact {
+        font-size: 30px;
+    }
+
+    .GM {
+        font-size: 23px;
+    }
 }

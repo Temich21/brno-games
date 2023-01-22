@@ -17,12 +17,6 @@
     },
     "Telegram": {
       "type": "string"
-    },
-    "dnd_game": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::dnd-game.dnd-game",
-      "inversedBy": "players"
     }
   }
 }
