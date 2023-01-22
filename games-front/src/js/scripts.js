@@ -1,32 +1,8 @@
-// async function loadPlayers(){
-//     const data = await fetch("http://localhost:1337/api/players")
-//     const players = await data.json()
-//     console.log(players)
-//     players.data.forEach(printPlayer);
-// }
-
-// window.addEventListener("load",loadPlayers)
-// function printPlayer(player){
-//     const element = document.querySelector("h2")
-//     element.innerText = element.innerText + "\n" +player.attributes.Name
-// }
-
-// async function loadPlayers(){
-//     const data = await fetch("http://localhost:1337/api/players")
-//     const players = await data.json()
-//     console.log(players)
-//     players.data.forEach(printPlayer);
-// }
-
-// window.addEventListener("load",loadPlayers)
-// function printPlayer(player){
-//     const element = document.querySelector("h2")
-//     element.innerText = element.innerText + "\n" +player.attributes.Name
-// }
+const backendUrl = "http://localhost:1337";
 
 async function loadNews() {
   const data = await fetch(
-    "http://localhost:1337/api/news?populate=*&sort[0]=publishedAt:desc"
+    `${backendUrl}/api/news?populate=*&sort[0]=publishedAt:desc`
   );
   const news = await data.json();
   news.data.forEach(createCardNews);
@@ -36,11 +12,10 @@ function createCardNews(data) {
   const newElement = document.createElement("div");
   const titleElement = document.createElement("h3");
   const textElement = document.createElement("h4");
-  const divScript = document.querySelector(".script"); // нужно ли? по факту просто достаточно вставить в документ
+  const divScript = document.querySelector(".content"); // нужно ли? по факту просто достаточно вставить в документ
 
   if (data.attributes.Image.data != null) {
-    const image =
-      "http://localhost:1337" + data.attributes.Image.data.attributes.url;
+    const image = backendUrl + data.attributes.Image.data.attributes.url;
     const imageElement = document.createElement("img");
     const contentElement = document.createElement("div");
 
@@ -48,12 +23,12 @@ function createCardNews(data) {
     contentElement.classList.add("contentWithImageContent");
     imageElement.src = image;
 
-    element = TitleAndTextAppend(
+    element = titleAndTextAppend(
       contentElement,
       titleElement,
       textElement,
       data
-    ); // коректная ли функция?
+    );
 
     newElement.appendChild(imageElement);
     newElement.appendChild(element);
@@ -61,13 +36,13 @@ function createCardNews(data) {
   } else {
     newElement.classList.add("contentWithoutImage");
 
-    element = TitleAndTextAppend(newElement, titleElement, textElement, data);
+    element = titleAndTextAppend(newElement, titleElement, textElement, data);
 
     divScript.appendChild(element);
   }
 }
 
-function TitleAndTextAppend(element, titleElement, textElement, data) {
+function titleAndTextAppend(element, titleElement, textElement, data) {
   element.appendChild(titleElement);
   element.appendChild(textElement);
 
@@ -76,15 +51,17 @@ function TitleAndTextAppend(element, titleElement, textElement, data) {
   return element;
 }
 
-async function loadGames(category = false) {
-  const data = await fetch("http://localhost:1337/api/games?populate=*");
+async function loadGames(category = null) {
+  const url = `${backendUrl}/api/games?populate=*`;
+
+  const query = category
+    ? `${url}&${`filters[game_type][GameTypeName][$eq]=${encodeURIComponent(
+        category
+      )}`}`
+    : url;
+
+  const data = await fetch(query);
   const games = await data.json();
-  if (category) {
-    games.data = games.data.filter(
-      (data) =>
-        data.attributes.game_type.data.attributes.GameTypeName == category
-    );
-  }
   games.data.forEach(createCardGame);
 }
 
@@ -92,11 +69,10 @@ function createCardGame(data) {
   const newElement = document.createElement("div");
   const titleElement = document.createElement("h3");
   const textElement = document.createElement("h4");
-  const divScript = document.querySelector(".script"); // нужно ли? по факту просто достаточно вставить в документ
+  const divScript = document.querySelector(".content"); // нужно ли? по факту просто достаточно вставить в документ
 
   if (data.attributes.Image.data != null) {
-    const image =
-      "http://localhost:1337" + data.attributes.Image.data.attributes.url;
+    const image = `${backendUrl}${data.attributes.Image.data.attributes.url}`;
     const imageElement = document.createElement("img");
     const contentElement = document.createElement("div");
 
@@ -124,18 +100,24 @@ function createCardGame(data) {
 }
 
 function contentUnification(data, titleElement, textElement) {
-  const GM = data.attributes.GM.data.attributes;
-  const description = data.attributes.Description;
-  const level = data.attributes.Level;
-  const players = data.attributes.Players.data;
-  const gamePlace = data.attributes.Game_place.data.attributes;
+  const { GM, Description, Level, Players, Game_place } = data.attributes;
+
+  const GMInfo = GM.data.attributes;
+  const description = Description;
+  const level = Level;
+  const players = Players.data;
+  const gamePlace = Game_place.data.attributes;
   const date = new Date(data.attributes.Date);
 
   titleElement.innerText = data.attributes.Game_name;
-  textElement.innerHTML = `<div>GM:${GM.Name} | Telegram:${GM.Telegram}</div> 
+  textElement.innerHTML = `<div>GM:${GMInfo.Name} | Telegram:${
+    GMInfo.Telegram
+  }</div> 
                              <div>${description}</div> 
                              <div>Уровень персонажей: ${level}</div>
-                             <div>Игроки:<ul>${playerPrint(players)}</ul></div>
+                             <div>Игроки:<ul>${printPlayerList(
+                               players
+                             )}</ul></div>
                              <div>Место проведения: ${
                                gamePlace.Name
                              } | Адрес: ${gamePlace.Description}</div>
@@ -144,19 +126,13 @@ function contentUnification(data, titleElement, textElement) {
   return [titleElement, textElement];
 }
 
-function playerPrint(players) {
-  let playerNames = "";
-  for (var i = 0; i < players.length; i++) {
-    const playerName =
-      "<li>" +
-      players[i].attributes.Name +
-      "|" +
-      players[i].attributes.Telegram +
-      "</li>";
-    playerNames += playerName;
-  }
-  return playerNames;
+function printPlayerList(players) {
+  return players.map(printPlayer).join("");
 }
+
+const printPlayer = (player) => `
+    <li>${player.attributes.Name} | <a href="https://telegram.me/${player.attributes.Telegram}">${player.attributes.Telegram}</a></li>
+`;
 
 function dateEditing(date) {
   const day = date.getDay();
