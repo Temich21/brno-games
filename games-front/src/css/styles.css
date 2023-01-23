@@ -12,7 +12,7 @@ body {
     /* background-color: #131313 */
 }
 
-.headerfloat {
+.headerFloat {
     position: fixed;
     top: 0;
     left: 0;
@@ -20,7 +20,7 @@ body {
     margin: 0 auto;
 }
 
-.header {
+.headerCard {
     display: flex;
     align-items: center;
     width: 920px;
@@ -114,7 +114,7 @@ h4 {
     font-family: verdana, Arial, Helvetica, sans-serif;
 }
 
-.end {
+footer {
     position: fixed;
     left: 0;
     right: 0;
@@ -152,7 +152,7 @@ ul {
 }
 
 @media only screen and (min-width: 481px) and (max-width: 700px) {
-    .header {
+    .headerCard {
         width: 100%;
         padding: 10px 0 10px 10px;
     }
@@ -193,7 +193,7 @@ ul {
 }
 
 @media only screen and (max-width: 480px) {
-    .header {
+    .headerCard {
         width: 100%;
         padding: 10px 0 10px 10px;
     }

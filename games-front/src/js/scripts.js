@@ -9,10 +9,10 @@ async function loadNews() {
 }
 
 function createCardNews(data) {
-    const newElement = document.createElement("div");
+    const newElement = document.createElement("article");
     const titleElement = document.createElement("h3");
     const textElement = document.createElement("h4");
-    const divScript = document.querySelector(".content");
+    const divScript = document.querySelector("main");
 
     if (data.attributes.Image.data != null) {
         const image = backendUrl + data.attributes.Image.data.attributes.url;
@@ -66,10 +66,10 @@ async function loadGames(category = null) {
 }
 
 function createCardGame(data) {
-    const newElement = document.createElement("div");
+    const newElement = document.createElement("article");
     const titleElement = document.createElement("h3");
     const textElement = document.createElement("h4");
-    const divScript = document.querySelector(".content");
+    const divScript = document.querySelector("main");
 
     if (data.attributes.Image.data != null) {
         const image = `${backendUrl}${data.attributes.Image.data.attributes.url}`;
