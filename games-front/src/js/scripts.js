@@ -23,7 +23,7 @@ function createCardNews(data) {
         contentElement.classList.add("contentWithImageContent");
         imageElement.src = image;
 
-        element = titleAndTextAppend(
+        const element = titleAndTextAppend(
             contentElement,
             titleElement,
             textElement,
@@ -36,7 +36,7 @@ function createCardNews(data) {
     } else {
         newElement.classList.add("contentWithoutImage");
 
-        element = titleAndTextAppend(newElement, titleElement, textElement, data);
+        const element = titleAndTextAppend(newElement, titleElement, textElement, data);
 
         divScript.appendChild(element);
     }
@@ -113,7 +113,7 @@ function contentUnification(data, titleElement, textElement) {
 
     titleElement.innerText = data.attributes.Game_name;
     textElement.innerHTML = `<div class='GM'>GM:${GMInfo.Name} | Telegram:
-    <a href="https://telegram.me/${GMInfo.Telegram}">${GMInfo.Telegram}</a></div> 
+    <a href="https://telegram.me/${GMInfo.Telegram.slice(1, -1)}">${GMInfo.Telegram}</a></div> 
                              <div style="font-family:cursive; ${padding}" >${description}</div> 
                              <div style="${padding}">Уровень персонажей: ${level}</div>
                              <div style="${padding}">Игроки:<ul>${printPlayerList(
@@ -131,7 +131,7 @@ function printPlayerList(players) {
 }
 
 const printPlayer = (player) => `
-    <li>${player.attributes.Name} | <a href="https://telegram.me/${player.attributes.Telegram}">${player.attributes.Telegram}</a></li>
+    <li>${player.attributes.Name} | <a href="https://telegram.me/${player.attributes.Telegram.slice(1, -1)}">${player.attributes.Telegram}</a></li>
 `;
 
 function dateEditing(date) {
