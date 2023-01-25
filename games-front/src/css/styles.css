@@ -1,0 +1,234 @@
+html {
+    background-image: url("http://localhost:1337/uploads/dark_grunge_texture_ac80e1053e.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+body {
+    margin: 0;
+    padding-bottom: 100px;
+    /* font-size: 12px; */
+    /* background-color: #131313 */
+}
+
+.headerFloat {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.headerCard {
+    display: flex;
+    align-items: center;
+    width: 920px;
+    margin: 0 auto;
+    padding: 25px 20px 25px 20px;
+    background-color: #232323;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+.logo {
+    width: 325px;
+    flex-shrink: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    margin: 0;
+    font-size: 42px;
+    text-transform: uppercase;
+    color: #DBDBDB;
+}
+
+.bookmark {
+    display: flex;
+    justify-content: space-between;
+    width: 650px;
+    box-sizing: border-box;
+    padding: 0 0 0 60px;
+    color: #DBDBDB;
+    font-size: 18px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.active {
+    color: #FDC609;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #FDC609
+}
+
+.bookmarkText {
+    color: #DBDBDB;
+}
+
+h2 {
+    width: 920px;
+    margin: 0 auto;
+    padding: 110px 20px 0px 20px;
+    color: #DBDBDB;
+    font-size: 35px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.contentWithoutImage {
+    width: 920px;
+    margin: 15px auto 0;
+    padding: 5px 20px 5px 20px;
+    color: #232323;
+    background-color: #FDC609;
+    font-family: verdana, Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    margin: 0;
+    font-size: 27px;
+    font-weight: bolder;
+}
+
+h4 {
+    margin: 5px 0;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.contentWithImage {
+    padding: 15px 0 0px 0;
+    display: flex;
+    /* position: relative; */
+    width: 960px;
+    margin: 0 auto;
+}
+
+.contentWithImageContent {
+    margin: 0 0 0 5px;
+    padding: 5px 0 0 5px;
+    background-color: #FDC609;
+    font-family: verdana, Arial, Helvetica, sans-serif;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+.contact {
+    width: 920px;
+    margin: 0 auto 0;
+    padding: 10px 20px;
+    color: #98989A;
+    background-color: #232323;
+    font-size: 15px;
+    font-family: verdana, Arial, Helvetica, sans-serif;
+}
+
+.contactInner {
+    display: flex;
+    gap: 10px;
+}
+
+img {
+    object-fit: contain;
+    object-position: center center;
+}
+
+ul {
+    margin: auto;
+}
+
+.GM {
+    font-size: 18px;
+    padding-bottom: 4px
+}
+
+@media only screen and (min-width: 481px) and (max-width: 700px) {
+    .headerCard {
+        width: 100%;
+        padding: 10px 0 10px 10px;
+    }
+
+    .logo {
+        width: 235px;
+    }
+
+    .bookmark {
+        padding: 0;
+        font-size: 22px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        padding: 115px 20px 0 20px;
+        font-size: 40px;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    .contact {
+        font-size: 18px;
+    }
+
+    .GM {
+        font-size: 23px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .headerCard {
+        width: 100%;
+        padding: 10px 0 10px 10px;
+    }
+
+    .logo {
+        width: 260px;
+    }
+
+    .bookmark {
+        padding: 0;
+        font-size: 25px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    h2 {
+        padding: 140px 20px 0 20px;
+        font-size: 40px;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    .contact {
+        font-size: 30px;
+    }
+
+    .GM {
+        font-size: 23px;
+    }
+}

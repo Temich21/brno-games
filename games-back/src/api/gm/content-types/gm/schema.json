@@ -1,14 +1,14 @@
 {
   "kind": "collectionType",
-  "collectionName": "players",
+  "collectionName": "gms",
   "info": {
-    "singularName": "player",
-    "pluralName": "players",
-    "displayName": "Player",
+    "singularName": "gm",
+    "pluralName": "gms",
+    "displayName": "GM",
     "description": ""
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {

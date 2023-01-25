@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * dnd-game service
+ * game-type service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::dnd-game.dnd-game');
+module.exports = createCoreService('api::game-type.game-type');

@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "game_types",
+  "info": {
+    "singularName": "game-type",
+    "pluralName": "game-types",
+    "displayName": "GameType",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "GameTypeName": {
+      "type": "string"
+    }
+  }
+}

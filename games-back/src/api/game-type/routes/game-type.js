@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * dnd-game router
+ * game-type router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::dnd-game.dnd-game');
+module.exports = createCoreRouter('api::game-type.game-type');

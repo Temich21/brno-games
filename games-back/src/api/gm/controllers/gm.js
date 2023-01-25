@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * dnd-game controller
+ * gm controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::dnd-game.dnd-game');
+module.exports = createCoreController('api::gm.gm');
