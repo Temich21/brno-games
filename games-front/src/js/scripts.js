@@ -61,8 +61,8 @@ async function loadGames(category = null) {
 
   const query = category
     ? `${url}&${`filters[game_type][GameTypeName][$eq]=${encodeURIComponent(
-        category
-      )}`}`
+      category
+    )}`}`
     : url;
 
   const data = await fetch(query);
@@ -118,20 +118,12 @@ function contentUnification(data, titleElement, textElement) {
 
   titleElement.innerText = data.attributes.Game_name;
   textElement.innerHTML = `<div class='GM'>GM:${GMInfo.Name} | Telegram:
-    <a href="https://telegram.me/${GMInfo.Telegram.slice(1, -1)}">${
-    GMInfo.Telegram
-  }</a></div> 
-                             <div style="font-family:cursive; ${padding}" >${description}</div> 
-                             <div style="${padding}">Уровень персонажей: ${level}</div>
-                             <div style="${padding}">Игроки:<ul>${printPlayerList(
-    players
-  )}</ul></div>
-                             <div style="${padding}">Место проведения: ${
-    gamePlace.Name
-  } | Адрес: ${gamePlace.Description}</div>
-                             <div style="${padding}">Дата проведения: ${dateEditing(
-    date
-  )}</div>`;
+    <a href="https://telegram.me/${GMInfo.Telegram.slice(1, -1)}">${GMInfo.Telegram}</a></div> 
+                           <div style="font-family:cursive; ${padding}" >${description}</div> 
+                           <div style="${padding}">Уровень персонажей: ${level}</div>
+                           <div style="${padding}">Игроки:<ul>${printPlayerList(players)}</ul></div>
+                           <div style="${padding}">Место проведения: ${gamePlace.Name} | Адрес: ${gamePlace.Description}</div>
+                           <div style="${padding}">Дата проведения: ${dateEditing(date)}</div>`;
 
   return [titleElement, textElement];
 }
@@ -141,12 +133,11 @@ function printPlayerList(players) {
 }
 
 const printPlayer = (player) => `
-    <li>${
-      player.attributes.Name
-    } | <a href="https://telegram.me/${player.attributes.Telegram.slice(
-  1,
-  -1
-)}">${player.attributes.Telegram}</a></li>
+    <li>${player.attributes.Name
+  } | <a href="https://telegram.me/${player.attributes.Telegram.slice(
+    1,
+    -1
+  )}">${player.attributes.Telegram}</a></li>
 `;
 
 function dateEditing(date) {

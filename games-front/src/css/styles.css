@@ -32,17 +32,6 @@ header {
     flex-shrink: 0;
 }
 
-li {
-    transition: all 0.7s;
-}
-
-li:hover {
-    transform: translate(-5px, -4px);
-}
-
-a {
-    text-decoration: none;
-}
 
 .navigation {
     display: flex;
@@ -54,6 +43,18 @@ a {
     color: #DBDBDB;
     font-size: 18px;
     font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+li {
+    transition: all 0.7s;
+}
+
+li:hover {
+    transform: translate(-5px, -4px);
+}
+
+a {
+    text-decoration: none;
 }
 
 .active {
