@@ -12,16 +12,12 @@ body {
     /* background-color: #131313 */
 }
 
-.headerFloat {
+header {
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    margin: 0 auto;
-}
-
-.headerCard {
-    display: flex;
     align-items: center;
     width: 920px;
     margin: 0 auto;
@@ -36,26 +32,29 @@ body {
     flex-shrink: 0;
 }
 
-a {
-    text-decoration: none;
-}
 
-h1 {
-    margin: 0;
-    font-size: 42px;
-    text-transform: uppercase;
-    color: #DBDBDB;
-}
-
-.bookmark {
+.navigation {
     display: flex;
     justify-content: space-between;
     width: 650px;
+    list-style-type: none;
     box-sizing: border-box;
     padding: 0 0 0 60px;
     color: #DBDBDB;
     font-size: 18px;
     font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+li {
+    transition: all 0.7s;
+}
+
+li:hover {
+    transform: translate(-5px, -4px);
+}
+
+a {
+    text-decoration: none;
 }
 
 .active {
@@ -69,6 +68,13 @@ h1 {
     color: #DBDBDB;
 }
 
+h1 {
+    margin: 0;
+    font-size: 42px;
+    text-transform: uppercase;
+    color: #DBDBDB;
+}
+
 h2 {
     width: 920px;
     margin: 0 auto;
@@ -76,15 +82,6 @@ h2 {
     color: #DBDBDB;
     font-size: 35px;
     font-family: Georgia, "Times New Roman", Times, serif;
-}
-
-.contentWithoutImage {
-    width: 920px;
-    margin: 15px auto 0;
-    padding: 5px 20px 5px 20px;
-    color: #232323;
-    background-color: #FDC609;
-    font-family: verdana, Arial, Helvetica, sans-serif;
 }
 
 h3 {
@@ -97,6 +94,15 @@ h4 {
     margin: 5px 0;
     font-size: 15px;
     font-weight: normal;
+}
+
+.contentWithoutImage {
+    width: 920px;
+    margin: 15px auto 0;
+    padding: 5px 20px 5px 20px;
+    color: #232323;
+    background-color: #FDC609;
+    font-family: verdana, Arial, Helvetica, sans-serif;
 }
 
 .contentWithImage {
@@ -121,7 +127,6 @@ footer {
     bottom: 0;
 }
 
-
 .contact {
     width: 920px;
     margin: 0 auto 0;
@@ -140,10 +145,6 @@ footer {
 img {
     object-fit: contain;
     object-position: center center;
-}
-
-ul {
-    margin: auto;
 }
 
 .GM {
