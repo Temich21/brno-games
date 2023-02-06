@@ -1,15 +1,16 @@
 import Head from "next/head"
-import Heading from "@/components/Heading"
-import loadGames from "@/processes/gamesCards"
+import Heading from "@/components/Heading/Heading"
+import LoadGames from "@/components/Cards/gamesCards"
 
-const TableGames = () => {
+const TableGames = () => (
     <>
         <Head>
+            <meta property="og:title" content="Table games" />
             <title>Настолки</title>
         </Head>
         <Heading text="Настолки" />
-        <loadGames.render />
+        <LoadGames category={'Настолки'} />
     </>
-}
+)
 
 export default TableGames

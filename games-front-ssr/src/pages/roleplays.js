@@ -1,15 +1,16 @@
 import Head from "next/head"
-import Heading from "@/components/Heading"
-import loadGames from "@/processes/gamesCards"
+import Heading from "@/components/Heading/Heading"
+import LoadGames from "@/components/Cards/gamesCards"
 
-const RolePlays = () => {
+const RolePlays = () => (
     <>
         <Head>
+            <meta property="og:title" content="Roleplays" />
             <title>Ролевки</title>
         </Head>
         <Heading text="Ролевки" />
-        <loadGames.render />
+        <LoadGames category={'Ролевки'} />
     </>
-}
+)
 
 export default RolePlays

@@ -56,7 +56,7 @@ function titleAndTextAppend(element, titleElement, textElement, data) {
   return element;
 }
 
-async function loadGames(category = null) {
+async function LoadGames(category = null) {
   const url = `${backendUrl}/api/games?populate=*&sort[0]=publishedAt:desc`;
 
   const query = category
