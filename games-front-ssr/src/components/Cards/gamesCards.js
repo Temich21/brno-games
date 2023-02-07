@@ -11,16 +11,16 @@ async function LoadGames({ category = null }) {
 
     const data = await fetch(query)
     const games = await data.json()
-    games.data.forEach(createCardGame)
+    return games.data.forEach(createCardGame)
 }
 
 const createCardGame = (data) => {
-    data = data.attributes
+    const data = data.attributes
 
     return (
         <article className={data.Image.data != null ? styles.contentWithImage : styles.contentWithoutImage}>
-            <img src={data.Image.data != null ? backendUrl + data.Image.data.attributes.url : null} placeholder="blur" className={styles.picture}></img>
-            <div className={data.Image.data != null ? styles.contentWithImageContent : null}>
+            <img src={data.Image.data != null ? backendUrl + data.Image.data.attributes.url : ''} placeholder="blur" className={styles.picture}></img>
+            <div className={data.Image.data != null ? styles.contentWithImageContent : ''}>
                 <h3 className={styles.banner}>{data.Game_name}</h3>
                 <h4 className={styles.text}>{contentUnification(data)}</h4>
             </div>

@@ -7,14 +7,17 @@ const LoadNews = async () => {
         `${backendUrl}/api/news?populate=*&sort[0]=publishedAt:desc`
     )
     const news = await data.json()
-    news.data.forEach(CreateNewsCard)
+    const newsElements = news.data.map((data) => < CreateNewsCard key={data.id} data={data.attributes} />)
+    return (
+        <div>{newsElements}</div>
+    )
 }
 
-const CreateNewsCard = (data) => {
-    data = data.attributes
+const CreateNewsCard = (props) => {
+    const data = props.data
     return (
         <article className={data.Image.data != null ? styles.contentWithImage : styles.contentWithoutImage}>
-            <img src={data.Image.data != null ? backendUrl + data.Image.data.attributes.url : null} placeholder="blur" className={styles.picture}></img>
+            <img src={data.Image.data != null ? backendUrl + data.Image.data.attributes.url : ''} placeholder="blur" className={styles.picture}></img>
             <div className={data.Image.data != null ? styles.contentWithImageContent : styles.contentWithouImageContent}>
                 <h3 className={styles.banner}>{data.Title}</h3>
                 <h4 className={styles.text}>{data.Text}</h4>
