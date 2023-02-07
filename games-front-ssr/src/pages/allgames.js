@@ -1,15 +1,17 @@
 import Head from "next/head"
-import Heading from "@/components/Heading"
-import loadGames from "@/processes/gamesCards"
+import Heading from "@/components/Heading/Heading"
+import LoadGames from "@/components/Cards/gamesCards"
 
-const AllGames = () => {
+const AllGames = () => (
     <>
         <Head>
+            <meta property="og:title" content="All Games" />
             <title>Все игры</title>
         </Head>
         <Heading text="Все игры" />
-        <loadGames.render />
+        <LoadGames />
     </>
-}
+)
+
 
 export default AllGames

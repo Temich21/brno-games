@@ -1,0 +1,49 @@
+.banner {
+    margin: 0;
+    font-size: 27px;
+    font-weight: bolder;
+}
+
+.text {
+    margin: 5px 0;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.contentWithoutImage {
+    width: 920px;
+    margin: 15px auto 0;
+    padding: 5px 20px 5px 20px;
+    color: #232323;
+    background-color: #FDC609;
+    font-family: verdana, Arial, Helvetica, sans-serif;
+}
+
+.contentWithImage {
+    padding: 15px 0 0px 0;
+    display: flex;
+    /* position: relative; */
+    width: 960px;
+    margin: 0 auto;
+}
+
+.contentWithImageContent {
+    margin: 0 0 0 5px;
+    padding: 5px 0 0 5px;
+    background-color: #FDC609;
+    font-family: verdana, Arial, Helvetica, sans-serif;
+}
+
+.picture {
+    object-fit: contain;
+    object-position: center center;
+}
+
+.gameInfo {
+    padding-bottom: 4px
+}
+
+.GM {
+    font-size: 18px;
+    padding-bottom: 4px
+}

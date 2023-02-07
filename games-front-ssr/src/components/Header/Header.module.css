@@ -1,0 +1,63 @@
+.header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    width: 920px;
+    margin: 0 auto;
+    padding: 25px 20px 25px 20px;
+    background-color: #232323;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.logo {
+    width: 325px;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 650px;
+    list-style-type: none;
+    box-sizing: border-box;
+    padding: 0 0 0 60px;
+    color: #DBDBDB;
+    font-size: 18px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.navigationText {
+    transition: all 0.7s;
+}
+
+.navigationText:hover {
+    transform: translate(-5px, -4px);
+}
+
+.active {
+    color: #FDC609;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #FDC609;
+    text-decoration: none;
+}
+
+.bookmarkText {
+    color: #DBDBDB;
+    text-decoration: none;
+}
+
+.logoText {
+    margin: 0;
+    font-size: 42px;
+    text-transform: uppercase;
+    color: #DBDBDB;
+}
+
+.logoLink {
+    text-decoration: none;
+}

@@ -1,0 +1,21 @@
+.footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.contact {
+    width: 920px;
+    margin: 0 auto 0;
+    padding: 10px 20px;
+    color: #98989A;
+    background-color: #232323;
+    font-size: 15px;
+    font-family: verdana, Arial, Helvetica, sans-serif;
+}
+
+.contactInner {
+    display: flex;
+    gap: 10px;
+}
