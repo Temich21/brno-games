@@ -1,23 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Cards.module.css";
 
-const backendUrl = "http://localhost:1337";
-
-const LoadNews = () => {
-  const [news, setNews] = useState({ data: [] });
-
-  const loadNews = async () => {
-    const data = await fetch(
-      `${backendUrl}/api/news?populate=*&sort[0]=publishedAt:desc`
-    );
-    const news = await data.json();
-    setNews(news);
-  };
-
-  useEffect(() => {
-    loadNews();
-  }, []);
-
+const News = ({ news }) => {
   const newsElements = news.data.map((data) => (
     <NewsCard key={data.id} data={data.attributes} />
   ));
@@ -33,15 +17,14 @@ const NewsCard = ({ data }) => {
           : styles.contentWithoutImage
       }
     >
-      <img
-        src={
-          data.Image.data != null
-            ? backendUrl + data.Image.data.attributes.url
-            : ""
-        }
-        placeholder="blur"
-        className={styles.picture}
-      ></img>
+      {data.Image.data != null ? (
+        <img
+          src={backendUrl + data.Image.data.attributes.url}
+          placeholder="blur"
+          className={styles.picture}
+        ></img>
+      ) : null}
+
       <div
         className={
           data.Image.data != null
@@ -56,4 +39,4 @@ const NewsCard = ({ data }) => {
   );
 };
 
-export default LoadNews;
+export default News;
