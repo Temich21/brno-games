@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
 import styles from "./Cards.module.css";
+import { backendUrl } from "@/constants";
 
 const News = ({ news }) => {
   const newsElements = news.data.map((data) => (
     <NewsCard key={data.id} data={data.attributes} />
-  ));
+  ))
   return <div>{newsElements}</div>;
 };
 
@@ -20,7 +20,6 @@ const NewsCard = ({ data }) => {
       {data.Image.data != null ? (
         <img
           src={backendUrl + data.Image.data.attributes.url}
-          placeholder="blur"
           className={styles.picture}
         ></img>
       ) : null}
