@@ -32,7 +32,7 @@ const GameCard = ({ data }) => {
                 }
             >
                 <h3 className={styles.banner}>{data.Game_name}</h3>
-                <h4 className={styles.text}>{<ContentUnification data={data} />}</h4>
+                <h4 className={styles.text}>{<ContentUnification key={data.id} data={data} />}</h4>
             </div>
         </article>
     )
@@ -57,7 +57,7 @@ const ContentUnification = ({ data }) => {
 }
 
 const printPlayerList = (players) => {
-    return players.map((player) => (<PrintPlayer player={player} />))
+    return players.map((player) => (<PrintPlayer key={player.id} player={player} />))
 }
 
 const PrintPlayer = ({ player }) => {
