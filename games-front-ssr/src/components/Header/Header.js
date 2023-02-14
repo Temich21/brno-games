@@ -18,9 +18,9 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <nav className={styles.logo}>
-                <a href="/" className={styles.logoLink}>
+                <Link href="/" className={styles.logoLink}>
                     <h1 className={styles.logoText}>Эхо легенд</h1>
-                </a>
+                </Link>
             </nav>
             <ul className={styles.navigation}>
                 {navigtion.map(({ id, title, path }) => (

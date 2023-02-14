@@ -1,34 +1,44 @@
-import styles from "./Cards.module.css"
+import styles from "./Cards.module.css";
+import { backendUrl } from "@/constants";
 
-const backendUrl = "http://localhost:1337"
-
-async function LoadGames({ category = null }) {
-    const url = `${backendUrl}/api/games?populate=*&sort[0]=publishedAt:desc`
-
-    const query = category
-        ? `${url}&${`filters[game_type][GameTypeName][$eq]=${encodeURIComponent(
-            category)}`}` : url
-
-    const data = await fetch(query)
-    const games = await data.json()
-    return games.data.forEach(createCardGame)
+const Games = ({ games }) => {
+    const newsElements = games.data.map((data) => (
+        <GameCard key={data.id} data={data.attributes} />
+    ))
+    return <div>{newsElements}</div>;
 }
 
-const createCardGame = (data) => {
-    const data = data.attributes
-
+const GameCard = ({ data }) => {
     return (
-        <article className={data.Image.data != null ? styles.contentWithImage : styles.contentWithoutImage}>
-            <img src={data.Image.data != null ? backendUrl + data.Image.data.attributes.url : ''} placeholder="blur" className={styles.picture}></img>
-            <div className={data.Image.data != null ? styles.contentWithImageContent : ''}>
+        <article
+            className={
+                data.Image.data != null
+                    ? styles.contentWithImage
+                    : styles.contentWithoutImage
+            }
+        >
+            {data.Image.data != null ? (
+                <img
+                    src={backendUrl + data.Image.data.attributes.url}
+                    className={styles.picture}
+                ></img>
+            ) : null}
+
+            <div
+                className={
+                    data.Image.data != null
+                        ? styles.contentWithImageContent
+                        : styles.contentWithouImageContent
+                }
+            >
                 <h3 className={styles.banner}>{data.Game_name}</h3>
-                <h4 className={styles.text}>{contentUnification(data)}</h4>
+                <h4 className={styles.text}>{<ContentUnification key={data.id} data={data} />}</h4>
             </div>
         </article>
     )
 }
 
-const contentUnification = (data) => {
+const ContentUnification = ({ data }) => {
     const GMTelgram = `https://telegram.me/${data.GM.data.attributes.Telegram.slice(1, -1)}`
 
     return (
@@ -36,8 +46,9 @@ const contentUnification = (data) => {
             <div className={styles.GM}> {data.GM.data.attributes.Name} |
                 Telegram: <a href={GMTelgram}>{data.GM.data.attributes.Telegram}</a>
             </div>
-            <div style={{ fontFamily: "cursive" }} >Уровень персонажей: {data.level}</div>
-            <div>Игроки:<ul>{printPlayerList(data.Players)}</ul></div>
+            <div style={{ fontFamily: "cursive" }} >{data.Description}</div>
+            <div >Уровень персонажей: {data.level}</div>
+            <div>Игроки:<ul>{printPlayerList(data.Players.data)}</ul></div>
             <div>Место проведения: {data.Game_place.data.attributes.Name}
                 | Адрес: {data.Game_place.data.attributes.Description}</div>
             <div>Дата проведения: {dateEditing(new Date(data.Date))}</div>
@@ -45,18 +56,22 @@ const contentUnification = (data) => {
     )
 }
 
-const printPlayer = (player) => (`
-<li>${player.attributes.Name} | 
-<a href="https://telegram.me/${player.attributes.Telegram.slice(1, -1)}">
-${player.attributes.Telegram}</a></li>
-`)
-
 const printPlayerList = (players) => {
-    return players.map(printPlayer).join("")
+    return players.map((player) => (<PrintPlayer key={player.id} player={player} />))
+}
+
+const PrintPlayer = ({ player }) => {
+    const playerTelgram = `https://telegram.me/${player.attributes.Telegram.slice(1, -1)}`
+
+    return (
+        <li>{player.attributes.Name} |
+            <a href={playerTelgram}>{player.attributes.Telegram}</a>
+        </li>
+    )
 }
 
 const dateEditing = (date) => {
-    const day = date.getDay();
+    const day = date.getDay()
     const days = [
         "Воскресенье",
         "Понедельник",
@@ -65,10 +80,10 @@ const dateEditing = (date) => {
         "Четверг",
         "Пятница",
         "Суббота",
-    ];
-    const dayName = days[date.getDay()];
+    ]
+    const dayName = days[date.getDay()]
 
-    const year = date.getFullYear();
+    const year = date.getFullYear()
 
     const months = {
         0: "Января",
@@ -84,15 +99,15 @@ const dateEditing = (date) => {
         10: "Ноября",
         11: "Декабря",
     };
-    const monthName = months[date.getMonth()];
+    const monthName = months[date.getMonth()]
 
-    const hour = date.getHours();
+    const hour = date.getHours()
 
-    const minutes = date.getMinutes();
+    const minutes = date.getMinutes()
 
-    const formatted = `${dayName}, ${day} ${monthName} ${year} в ${hour}:${minutes}0`;
+    const formatted = `${dayName}, ${day} ${monthName} ${year} в ${hour}:${minutes}0`
 
     return formatted;
 }
 
-export default LoadGames
+export default Games

@@ -12,10 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "Telegram": {
       "type": "string"
     },
-    "Telegram": {
+    "Name": {
       "type": "string"
     }
   }

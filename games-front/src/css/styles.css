@@ -162,7 +162,7 @@ img {
         width: 235px;
     }
 
-    .bookmark {
+    .bookmarkText {
         padding: 0;
         font-size: 22px;
     }
@@ -172,7 +172,7 @@ img {
     }
 
     h2 {
-        padding: 115px 20px 0 20px;
+        padding: 150px 20px 0 20px;
         font-size: 40px;
     }
 
@@ -199,11 +199,16 @@ img {
         padding: 10px 0 10px 10px;
     }
 
+    .navigation {
+        padding: 0;
+    }
+
     .logo {
         width: 260px;
     }
 
-    .bookmark {
+    .bookmarkText,
+    .active {
         padding: 0;
         font-size: 25px;
     }
@@ -213,7 +218,7 @@ img {
     }
 
     h2 {
-        padding: 140px 20px 0 20px;
+        padding: 170px 20px 0 20px;
         font-size: 40px;
     }
 
