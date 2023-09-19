@@ -6,7 +6,7 @@ The "Brno Table Games" project was designed to cater to a small group dedicated 
 - **Admin Dashboard:** The backend includes a secure admin dashboard, allowing authorized users to log in and add new event updates or edit existing ones. This streamlined process ensures that event information is always up-to-date.
 - **News and Updates:** Admins can post news and updates related to tabletop gaming events, providing users with valuable insights and announcements.
 - **User Engagement:** The website fosters user engagement by providing a platform for tabletop gaming enthusiasts to stay informed about events, share feedback, and connect with the gaming community in Brno.
-- **Ease of Maintenance:** With the backend admin capabilities, maintaining the website and keeping event information current is efficient and straightforward. <br/>
+- **Ease of Maintenance:** With the backend admin capabilities, maintaining the website and keeping event information current is efficient and straightforward. <br/><br/>
 The "Brno Table Games" project not only serves as a valuable resource for the local tabletop gaming community but also demonstrates the fusion of frontend and backend development to create an informative and engaging platform for event enthusiasts in Brno.
 
 
