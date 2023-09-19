@@ -7,8 +7,7 @@ The "Brno Table Games" project was designed to cater to a small group dedicated 
 - **News and Updates:** Admins can post news and updates related to tabletop gaming events, providing users with valuable insights and announcements.
 - **User Engagement:** The website fosters user engagement by providing a platform for tabletop gaming enthusiasts to stay informed about events, share feedback, and connect with the gaming community in Brno.
 - **Ease of Maintenance:** With the backend admin capabilities, maintaining the website and keeping event information current is efficient and straightforward. <br/>
-Throughout this repository, you'll find examples of my work with essential data analysis and machine learning libraries like Scikit-learn. These tasks encompass a range of techniques, from basic data retrieval to advanced machine learning applications.<br/><br/>
-My "Data Analysis and Visualization in Python" repository reflects my dedication to mastering the tools and techniques necessary for effective data analysis and visualization in the Python ecosystem.
+The "Brno Table Games" project not only serves as a valuable resource for the local tabletop gaming community but also demonstrates the fusion of frontend and backend development to create an informative and engaging platform for event enthusiasts in Brno.
 
 
 
